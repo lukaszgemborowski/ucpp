@@ -13,7 +13,7 @@ class uninitialized_array
 
 public:
     using value_type = T;
-    using reference = const T&;
+    using reference = T&;
     using const_reference = const T&;
     using iterator = const T*;
     using const_iterator = const T*;
