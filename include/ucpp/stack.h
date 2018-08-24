@@ -48,7 +48,7 @@ public:
     }
 
     iterator end() {
-        return reinterpret_cast<T *>(&buffer_[(top_ - 1) * element_size::value]);
+        return reinterpret_cast<T *>(&buffer_[top_ * element_size::value]);
     }
 
     size_type size() const {
