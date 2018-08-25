@@ -23,19 +23,19 @@ public:
         return N;
     }
 
-    constexpr iterator begin() {
+    iterator begin() {
         return &buffer_[0];
     }
 
-    constexpr iterator end() {
+    iterator end() {
         return &buffer_[N];
     }
 
-    constexpr reference at(size_type pos) {
+    reference at(size_type pos) {
         return buffer_[pos];
     }
 
-    constexpr reference operator[](size_type pos) {
+    reference operator[](size_type pos) {
         return buffer_[pos];
     }
 

@@ -38,8 +38,8 @@ struct base_test_case {
         root_test = this;
     }
 
-    virtual void run() = 0;
-    virtual const char* name() const = 0;
+    virtual void run() {}
+    virtual const char* name() const {}
 };
 
 #define TEST_CASE(tc_name) \
