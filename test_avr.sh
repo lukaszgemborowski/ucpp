@@ -21,7 +21,9 @@ AVRDUDEFLAGS=" -F -V -c arduino -p ATMEGA328P -P /dev/ttyACM0 -b 115200 -C $ARDU
 
 set -e
 
-FILES="tests/tests_array.cxx tests/tests_stack.cxx tests/avr_main.cxx tests/tests_bitmap_allocator.cxx tests/tests_uninitialized_array.cxx"
+FILES="tests/tests_array.cxx tests/tests_stack.cxx tests/avr_main.cxx
+tests/tests_bitmap_allocator.cxx tests/tests_uninitialized_array.cxx
+tests/tests_bit.cxx"
 
 $CXX $CXXFLAGS $FILES -Iinclude -o avr_tests
 $OBJCOPY $OBJCOPYFLAGS avr_tests avr_tests.hex
