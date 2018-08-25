@@ -35,3 +35,16 @@ TEST_CASE(construct_and_destruct_one_element)
     arr.destruct(0);
     CHECK(count == 0);
 }
+
+TEST_CASE(uninitialized_array_check_ownership)
+{
+     ucpp::uninitialized_array<int, 2> arr;
+     int out_of_array = 0;
+
+     arr.construct(0);
+     arr.construct(1);
+
+     CHECK(arr.own(arr[0]));
+     CHECK(arr.own(arr[1]));
+     CHECK(arr.own(out_of_array) == false);
+}

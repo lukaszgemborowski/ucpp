@@ -38,6 +38,16 @@ public:
         return *tptr;
     }
 
+    constexpr size_type index_of(reference obj) const
+    {
+        return &obj - reinterpret_cast<const T *>(&buffer_[0]);
+    }
+
+    constexpr bool own(reference obj) const
+    {
+        return index_of(obj) < size();
+    }
+
     void destruct(size_type i)
     {
         char *ptr = &buffer_[i * element_size::value];

@@ -12,6 +12,7 @@ class bitmap_allocator
 {
 public:
     using reference = T &;
+    using const_reference = const T &;
     using pointer = T *;
     using size_type = unsigned int;
 
@@ -21,6 +22,18 @@ public:
         auto index = find_and_mark();
         allocated_ ++;
         return pool_.construct(index, args...);
+    }
+
+    void deallocate(reference obj)
+    {
+        auto index = find_and_clear(obj);
+        pool_.destruct(index);
+        allocated_ --;
+    }
+
+    constexpr bool own(reference obj) const
+    {
+        return pool_.own(obj);
     }
 
     constexpr size_type allocated_count() const
@@ -39,6 +52,16 @@ public:
     }
 
 private:
+    unsigned int find_and_clear(reference obj)
+    {
+        auto index = pool_.index_of(obj);
+        auto byte_index = index / 8;
+        auto bit_index = index % 8;
+
+        bits_[byte_index] = bits_[byte_index] & ~(1 << bit_index);
+        return index;
+    }
+
     unsigned int find_and_mark()
     {
         unsigned int index = 0;
