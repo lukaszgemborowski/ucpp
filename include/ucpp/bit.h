@@ -22,6 +22,23 @@ constexpr void set(T &value) {
     set<Bs...>(value);
 }
 
+namespace detail {
+template<unsigned int B, typename T>
+constexpr T clear(T value) {
+    return value & ~(1 << B);
+}
+}
+
+template<typename T>
+constexpr void clear(T &) {}
+
+template<unsigned int B, unsigned int... Bs, typename T>
+constexpr void clear(T &value) {
+    value = detail::clear<B>(value);
+    clear<Bs...>(value);
+}
+
+
 }
 }
 
