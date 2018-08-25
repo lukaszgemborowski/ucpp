@@ -1,13 +1,6 @@
 #include "ucpp/testing.h"
 #include "ucpp/uninitialized_array.h"
 
-TEST_INIT;
-
-int main() {
-    test_run();
-    return 0;
-}
-
 TEST_CASE(construct_uninitialized_array)
 {
     static int count = 0;

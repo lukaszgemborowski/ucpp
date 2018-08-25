@@ -1,13 +1,6 @@
 #include "ucpp/testing.h"
 #include "ucpp/bitmap_allocator.h"
 
-TEST_INIT;
-
-int main() {
-    test_run();
-    return 0;
-}
-
 TEST_CASE(allocate_one_object)
 {
     struct T {

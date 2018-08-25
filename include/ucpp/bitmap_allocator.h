@@ -13,6 +13,7 @@ class bitmap_allocator
 public:
     using reference = T &;
     using pointer = T *;
+    using size_type = unsigned int;
 
     template<typename... Args>
     reference allocate(Args&&... args)
@@ -22,17 +23,17 @@ public:
         return pool_.construct(index, args...);
     }
 
-    constexpr auto allocated_count() const
+    constexpr size_type allocated_count() const
     {
         return allocated_;
     }
 
-    constexpr auto capacity() const
+    constexpr size_type capacity() const
     {
         return N;
     }
 
-    constexpr auto space_available() const
+    constexpr bool space_available() const
     {
         return allocated_count() < capacity();
     }
