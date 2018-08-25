@@ -17,6 +17,8 @@ struct integral_constant {
 #ifdef __AVR__
 inline void* operator new(unsigned int, void* __p) throw() { return __p; }
 inline void  operator delete(void*, void*) throw() { }
+#else
+#include <new>
 #endif
 
 #endif

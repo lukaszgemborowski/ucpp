@@ -15,7 +15,11 @@ public:
     using const_iterator = const T*;
     using size_type = unsigned int;
 
-    constexpr unsigned int size() {
+    array() : buffer_()
+    {
+    }
+
+    constexpr unsigned int size() const {
         return N;
     }
 

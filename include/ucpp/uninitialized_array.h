@@ -9,11 +9,11 @@ template<typename T, unsigned int N>
 class uninitialized_array
 {
     using element_size = integral_constant<unsigned int, sizeof(T)>;
-    using buffer_size = integral_constant<unsigned int, N>;
+    using buffer_size = integral_constant<unsigned int, element_size::value * N>;
 
 public:
     using value_type = T;
-    using reference = T&;
+    using reference = T &;
     using const_reference = const T&;
     using iterator = const T*;
     using const_iterator = const T*;

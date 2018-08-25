@@ -20,11 +20,11 @@ TEST_CASE(allocate_one_object)
 TEST_CASE(bitmap_allocator_unique_addresses)
 {
     constexpr auto number = 20;
-    int* addrs[number];
+    int* addrs[number] = {0};
     ucpp::bitmap_allocator<int, number> alloc;
 
     for (int i = 0; i < number; i ++) {
-        addrs[i] = &alloc.allocate(i);
+        addrs[i] = &alloc.allocate(42);
 
         for (int j = 0; j < i; j ++) {
             CHECK(addrs[j] != addrs[i]);

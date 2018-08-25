@@ -63,7 +63,7 @@ private:
 
 private:
     uninitialized_array<T, N> pool_;
-    array<char, N/8> bits_;
+    array<unsigned char, (N/8)+1> bits_;
     unsigned int allocated_ = 0; 
 };
 
