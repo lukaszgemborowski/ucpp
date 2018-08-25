@@ -1,4 +1,4 @@
-#ifndef UCPP_AVR_USART_H
+#if !defined(UCPP_AVR_USART_H) && defined(__AVR__)
 #define UCPP_AVR_USART_H
 
 #include <avr/io.h>
