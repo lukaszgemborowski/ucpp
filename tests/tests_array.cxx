@@ -1,13 +1,6 @@
 #include "ucpp/testing.h"
 #include "ucpp/array.h"
 
-TEST_INIT;
-
-int main() {
-    test_run();
-    return 0;
-}
-
 TEST_CASE(default_initialized_array)
 {
     const int default_value = 42;
@@ -37,5 +30,3 @@ TEST_CASE(default_initialized_array)
         CHECK(arr[i].value == default_value);
     }
 }
-
-

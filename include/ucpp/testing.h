@@ -1,6 +1,8 @@
 #ifndef UCPP_TESTING_H
 #define UCPP_TESTING_H
 
+#include <stddef.h>
+
 struct test_results
 {
     test_results() : current_check(0), success(true) {}
@@ -8,7 +10,7 @@ struct test_results
     bool success;
 };
 
-#ifndef UCPP_TEST_DISABLE_STDIO
+#if !defined(UCPP_TEST_DISABLE_STDIO) && defined(UCPP_TEST_MAIN)
 #include <iostream>
 struct iostream_handler
 {
@@ -55,6 +57,7 @@ struct base_test_case {
         results.success = false; \
         return; }
 
+#if defined(UCPP_TEST_MAIN)
 #define TEST_INIT \
     base_test_case *root_test = NULL;
 
@@ -75,5 +78,6 @@ void test_run(ResultHandler handler = ResultHandler())
         current = current->next;
     }
 }
+#endif
 
 #endif

@@ -14,4 +14,9 @@ struct integral_constant {
 
 } // namespace cpp
 
+#ifdef __AVR__
+inline void* operator new(unsigned int, void* __p) throw() { return __p; }
+inline void  operator delete(void*, void*) throw() { }
+#endif
+
 #endif

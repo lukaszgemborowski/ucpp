@@ -1,13 +1,6 @@
 #include "ucpp/testing.h"
 #include "ucpp/stack.h"
 
-TEST_INIT;
-
-int main() {
-    test_run();
-    return 0;
-}
-
 TEST_CASE(empty_stack_default_init)
 {
     ucpp::stack<int, 10> stack;
@@ -21,7 +14,7 @@ TEST_CASE(push_one_value)
     struct copy_constructible {
         copy_constructible() = delete;
         explicit copy_constructible(int v) : value(v) {}
-        copy_constructible(const copy_constructible &) {}
+        copy_constructible(const copy_constructible &o) : value(o.value) {}
 
         int value;
     };
