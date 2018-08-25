@@ -49,7 +49,7 @@ private:
             }
 
             unsigned int bit_index = 0;
-            while (byte & 1) {
+            while (byte & 1 && bit_index < 8) {
                 byte = byte >> 1;
                 bit_index ++;
             }
